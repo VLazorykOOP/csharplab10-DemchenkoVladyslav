@@ -14,8 +14,11 @@ namespace Lab9_10CharpT
         // Подія, що відбувається, коли кінь народжується
         public event EventHandler Born;
 
-        // Подія, що відбувається, коли кінь відомляє про свій вік
+        // Подія, що відбувається, коли кінь повідомляє про свій вік
         public event EventHandler AgeAnnounced;
+
+        // Подія, що відбувається, коли кінь помирає
+        public event EventHandler DeathAnnounced;
 
         public Horse(string name)
         {
@@ -36,17 +39,24 @@ namespace Lab9_10CharpT
             Console.WriteLine($"{name} має {age} років.");
             OnAgeAnnounced();
         }
-
+        public void Kill()
+        {
+            OnDeath();
+        }
         // Метод для виклику події Born
         protected virtual void OnBorn()
         {
             Born?.Invoke(this, EventArgs.Empty);
         }
-
+        protected virtual void OnDeath()
+        {
+            DeathAnnounced?.Invoke(this, EventArgs.Empty);
+        }
         // Метод для виклику події AgeAnnounced
         protected virtual void OnAgeAnnounced()
         {
             AgeAnnounced?.Invoke(this, EventArgs.Empty);
         }
+
     }
 }
