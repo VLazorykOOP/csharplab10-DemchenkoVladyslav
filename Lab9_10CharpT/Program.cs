@@ -24,63 +24,69 @@ catch (NotReversedStringException e)
 }
 static void RecursiveMethod()
 {
-    RecursiveMethod();
+    try
+    {
+        // StackOverflowException
+        RecursiveMethod(); // Генерує StackOverflowException
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine($"StackOverflowException: {e.Message}");
+    }
 }
 try
 {
     // DivideByZeroException
     int a = 0;
     int result = 10 / a; // Генерує DivideByZeroException
-
+}
+catch (DivideByZeroException e)
+{
+    Console.WriteLine($"DivideByZeroException: {e.Message}");
+}
+try
+{
     // IndexOutOfRangeException
     int[] numbers = new int[5];
     int value = numbers[10]; // Генерує IndexOutOfRangeException
-
+}
+catch (IndexOutOfRangeException e)
+{
+    Console.WriteLine($"IndexOutOfRangeException: {e.Message}");
+}
+try
+{
     // InvalidCastException
     object obj = "string";
     int num = (int)obj; // Генерує InvalidCastException
-
+}
+catch (InvalidCastException e)
+{
+    Console.WriteLine($"InvalidCastException: {e.Message}");
+}
+try
+{
     // OutOfMemoryException
     int[] bigArray = new int[int.MaxValue]; // Генерує OutOfMemoryException
-
+}
+catch (OutOfMemoryException e)
+{
+    Console.WriteLine($"OutOfMemoryException: {e.Message}");
+}
+try
+{
     // OverflowException
     checked
     {
         int maxInt = int.MaxValue;
         int incremented = maxInt + 1; // Генерує OverflowException
     }
-
-    // StackOverflowException
-    RecursiveMethod(); // Генерує StackOverflowException
-}
-catch (ArrayTypeMismatchException e)
-{
-    Console.WriteLine($"ArrayTypeMismatchException: {e.Message}");
-}
-catch (DivideByZeroException e)
-{
-    Console.WriteLine($"DivideByZeroException: {e.Message}");
-}
-catch (IndexOutOfRangeException e)
-{
-    Console.WriteLine($"IndexOutOfRangeException: {e.Message}");
-}
-catch (InvalidCastException e)
-{
-    Console.WriteLine($"InvalidCastException: {e.Message}");
-}
-catch (OutOfMemoryException e)
-{
-    Console.WriteLine($"OutOfMemoryException: {e.Message}");
 }
 catch (OverflowException e)
 {
     Console.WriteLine($"OverflowException: {e.Message}");
 }
-catch (StackOverflowException e)
-{
-    Console.WriteLine($"StackOverflowException: {e.Message}");
-}
+
 
 
 
